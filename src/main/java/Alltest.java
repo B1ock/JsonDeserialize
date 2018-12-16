@@ -32,20 +32,37 @@ public class Alltest {
         mapper.registerModule(module);
 
         final A []a = mapper.readValue(url, A[].class);
+        List<A> alist = new ArrayList<A>();
+        for (int i = 0; i < a.length; ++i) {
+            alist.add(new A(a[i].a, a[i].getS()));
+        }
+        Collections.sort(alist, new Comparator<A>() {
+            @Override
+            public int compare(final A o1, final A o2) {
+                if (o1.a < o2.a)
+                    return -1;
+                else if (o1.a > o2.a)
+                    return 1;
+                else
+                    return 0;
+            }
+        });
+
 
 // then, when you want to schedule a task
         Runnable task = new Runnable() {
             @Override
             public void run() {
-                System.out.println(a);
+                System.out.println(alist);
             }
         };
+
         for(int i = 0; i < a.length; i++) {
-            timeSpent =  a[i].a - System.currentTimeMillis() - startTime;
+            timeSpent =  a[i].a - (System.currentTimeMillis() - startTime);
             if(timeSpent < 0){
                 timeSpent = 0;
             }
-            executor.schedule(task, timeSpent, TimeUnit.SECONDS);
+            executor.schedule(task, timeSpent, TimeUnit.MILLISECONDS);
         }
         executor.shutdown();
     }
@@ -63,6 +80,7 @@ public class Alltest {
         timeInSecond += (time.charAt(1) - '0') * 60;
         timeInSecond += (time.charAt(3) - '0') * 10;
         timeInSecond += (time.charAt(4) - '0');
+        timeInSecond *= 1000;
         A account = new A(timeInSecond, root.eventName);
 
 
@@ -87,7 +105,12 @@ public class Alltest {
     }
 
     int a;
-    String s;
+
+      public String getS() {
+          return s;
+      }
+
+      String s;
 
       public String toString(){
           return "Time event: " + a + "\n"
