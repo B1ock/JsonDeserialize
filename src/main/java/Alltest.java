@@ -50,15 +50,12 @@ public class Alltest {
 
 
 // then, when you want to schedule a task
-        Runnable task = new Runnable() {
-            @Override
-            public void run() {
-                System.out.println(alist);
-            }
-        };
 
-        for(int i = 0; i < a.length; i++) {
-            timeSpent =  a[i].a - (System.currentTimeMillis() - startTime);
+
+        for (final A currentElement : a) {
+
+            timeSpent =  currentElement.a - (System.currentTimeMillis() - startTime);
+            Runnable task = () -> System.out.println(currentElement);
             if(timeSpent < 0){
                 timeSpent = 0;
             }
@@ -104,7 +101,11 @@ public class Alltest {
         this.s = s;
     }
 
-    int a;
+      public int getA() {
+          return a;
+      }
+
+      int a;
 
       public String getS() {
           return s;
