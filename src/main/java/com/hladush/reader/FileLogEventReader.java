@@ -9,7 +9,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
+/**
+ * Class for read log events from file
+ */
+
 public class FileLogEventReader implements Reader<LogEvent> {
+
+
     private static final TypeReference<List<LogEvent>> LIST_TYPE_REFERENCE = new TypeReference<List<LogEvent>>() {
     };
     private static final LogEventDeserializer DESERIALIZER = LogEventDeserializer.getInstance();

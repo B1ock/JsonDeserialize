@@ -9,6 +9,9 @@ import com.hladush.validator.DateValidator;
 
 import java.io.IOException;
 
+/**
+ * CustomDeserializer for deserializing LogEvent from json to object
+ */
 public class CustomEventJsonDeserializer extends JsonDeserializer<LogEvent> {
 
     @Override
@@ -16,7 +19,7 @@ public class CustomEventJsonDeserializer extends JsonDeserializer<LogEvent> {
         TempEvent event = jp.readValueAs(TempEvent.class);
 
         if (!DateValidator.isValidLogTime(event.time)) {
-            throw new IllegalArgumentException("Invalide time");
+            throw new IllegalArgumentException("Invalid time " + event.time);
         }
         int timeInMilliseconds = TimeDeserializationUtils.convertToMillisecond(event.time);
 

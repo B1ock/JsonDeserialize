@@ -1,6 +1,15 @@
 package com.hladush.deserializer;
 
+/**
+ * Utilitar class for deserialization
+ */
 public class TimeDeserializationUtils {
+
+    /**
+     * convertsString(mm:ss) to milliseconds
+     * @param time
+     * @return
+     */
     public static int convertToMillisecond(String time) {
         int timeInSecond = (time.charAt(0) - '0') * 10 * 60;
         timeInSecond += (time.charAt(1) - '0') * 60;

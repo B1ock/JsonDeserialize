@@ -1,0 +1,15 @@
+[
+  {
+    "eventName": "Visitor Jack picked 1 bread to his basket",
+    "time": "00:17"
+  },
+  {
+    "eventName": "Visitor John Wick picked 2 battaries AA to his basket",
+    "time": "00:35"
+  },
+  {
+    "eventName": "Visitor John Oher picked 3 chicken to his basket",
+    "time": "00:59"
+  }
+
+]

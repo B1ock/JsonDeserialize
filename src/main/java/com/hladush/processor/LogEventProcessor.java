@@ -13,6 +13,10 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Class for reading from a file, writing to a collection and sorting it
+ * as well as for printing all elements.
+ */
 public class LogEventProcessor {
 
     private Writer writer = new ConsoleWriter();
@@ -35,7 +39,7 @@ public class LogEventProcessor {
             if (timeSpent < 0) {
                 timeSpent = 0;
             }
-            Runnable task = () -> System.out.println(currentElement);
+            Runnable task = () -> writer.write(currentElement);
             executor.schedule(task, timeSpent, TimeUnit.MILLISECONDS);
         }
         executor.shutdown();

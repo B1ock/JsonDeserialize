@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
+/**
+ *  Class for deserializetion LogEvent
+ */
 public class LogEventDeserializer {
 
     private static final LogEventDeserializer INSTANCE = new LogEventDeserializer();
